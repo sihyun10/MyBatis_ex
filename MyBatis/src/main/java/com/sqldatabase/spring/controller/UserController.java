@@ -1,21 +1,24 @@
 package com.sqldatabase.spring.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sqldatabase.spring.dto.UserDTO;
 import com.sqldatabase.spring.service.UserService;
 
-@RestController
+@Controller
 public class UserController {
+	
 	@Autowired
 	private UserService userservice;
 	
-	@RequestMapping("/users")
-	public List<UserDTO> users() throws Exception{
-		return userservice.selectUsers();
+	@RequestMapping(value = "/user" , method=RequestMethod.GET)
+	public String Hello(Model model) throws Exception {
+		// Spring 에서 제공하는 Model 객체를 사용하여 뷰페이지에 데이터를 넘겨준다. 
+		model.addAttribute("result", userservice.selectUsers());
+		// jsp 페이지 호출
+		return "/user";
 	}
 }
