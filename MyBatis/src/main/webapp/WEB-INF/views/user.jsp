@@ -20,13 +20,22 @@
 <body>
 <hr>
 <table>
-	<c:forEach var="data" items="${result}">
-		<tr>
-			<td>${data.name}</td>
-			<td>${data.phone }</td>
-			<td>${data.addr }</td>
-		</tr>
-	</c:forEach>
+<thead>
+	<tr>
+		<th>이름</th>
+		<th>전화번호</th>
+		<th>주소</th>
+	</tr>
+</thead>
+	<tbody>
+		<c:forEach var="data" items="${result}">
+			<tr>
+				<td>${data.name}</td>
+				<td>${data.phone}</td>
+				<td>${data.addr}</td>
+			</tr>
+		</c:forEach>
+	</tbody>
 </table>
 </body>
 </html>
